@@ -14,6 +14,7 @@ const RegisterPage = () => {
           <div className="flex flex-col w-96 m-auto">
             <input type="text" placeholder="username" name="uname" required className='outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
             <input type="password" placeholder="heslo" name="psw" required className='mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
+            <input type="password" placeholder="heslo" name="psw" required className='mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
             <button type="submit" className='p-2 mt-10 bg-black rounded-md text-green-300'>Registrovat sa</button>
             <button type="submit" className='p-2 mt-10 bg-black rounded-md text-green-300'><a href="/login">back to login</a></button>
           </div>

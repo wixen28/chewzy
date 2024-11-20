@@ -1,37 +1,50 @@
 import { useNavigate } from "react-router-dom"
-import dog from '../../utils/images/dog.png'
 
+import dog from '../../utils/images/dog.png'
+import { FaGoogle } from "react-icons/fa"
+import { FaFacebook } from "react-icons/fa"
 
 const LoginPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="flex justify-center items-center h-screen text-white">
-      <div className="flex w-9/12 h-4/5 bg-[#152e2b] m-auto p-4 rounded-lg card" >
-        <div className='w-2/5 p-4 flex flex-col'> 
-          <h1 className="text-3xl font-bold text-green-300">chewzy</h1>
-          <h2 className=" m-auto text-4xl mt-24 leading-normal">Nájdite stráženie pre vaše zdechlinky</h2>
-          <img src={dog} alt="" className='w-60'/>
+    <div className='flex justify-center items-center h-screen text-white'>
+      <div className='flex flex-col md:flex-row w-full h-screen md:w-8/12 md:h-4/5 rounded-none md:rounded-md p-4 card'>
+        <div className='w-full md:w-2/5 p-4 flex flex-col'>
+          <h1 className='text-3xl font-bold text-green-300 items-center md:items-start'>chewzy</h1>
+          <h2 className='text-center md:text-left sm:text-3xl md:text-4xl mt-10 md:mt-24 leading-normal'>
+            Stráženie pre Vašich domácich miláčikov
+          </h2>
+          <img src={dog} alt="" className='w-60 hidden md:block'/>
         </div>
-        <form action="" className=" p-4 rounded-md w-3/5 m-auto">
-          <div className="flex flex-col w-96 m-auto">
+          <form action="" className='p-4 rounded-md w-full sm:w-3/5 sm:mt-24 sm:mx-auto md:m-auto'>
+          <div className='flex flex-col max-w-96 m-auto'>
+            <h3 className='py-4 text-md m-auto'>Prihláste sa</h3>
             <input type="text" placeholder="username" name="uname" required className='outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
             <input type="password" placeholder="heslo" name="psw" required className='mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
-            <button type="submit" className='p-2 mt-10 bg-black rounded-md text-green-300'>Prihlásiť sa</button>
-            <div className='flex justify-between'>
-              <div className='flex gap-2 mt-2'>
-                <input type="checkbox" name="remember"/>
-                <p className="text-xs text-green-300">Zapamätať heslo</p>
+            <button type="submit" className='p-2 mt-10 bg-black rounded-md text-green-300 hover:bg-zinc-900'>Prihlásiť sa</button>
+            <div className='flex items-center w-full mt-4'>
+              <hr className='border-gray-500 flex-grow'/>
+              <p className='mx-4 text-[10px]'>alebo</p>
+              <hr className='border-gray-500 flex-grow' />
+            </div>
+            <div className='flex justify-between w-full gap-2 mt-2'>
+              <button 
+                className='flex items-center bg-black flex-1 gap-2 p-2 w-36 justify-center font-mono text-xs rounded-md border-gray-700 border-[1px]'
+              ><FaGoogle /> Google</button>
+              <button 
+                className='flex items-center bg-black flex-1 p-2 w-36 justify-center gap-2 font-mono text-xs rounded-md border-gray-700 border-[1px]'
+              ><FaFacebook/> Facebook</button>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <div className='flex gap-2 mt-2 items-center'>
+                <button onClick={() => alert('todo')} className="text-xs hover:text-gray-400">Zabudli ste heslo?</button>
               </div>
-              <div className='flex gap-2 mt-2'>
-                <a href="/register">Nemate ucet?registruj sa</a>
+              <div className='flex gap-2 mt-2 text-xs'>
+                <p className='text-green-300'>Nemáte ešte účet? </p><a href="/register" className='hover:text-gray-400'>Zaregistruje sa</a>
               </div>
             </div>
           </div>
-
-          {/* <div className="flex">
-            <span >Forgot <a href="#">password?</a></span>
-          </div> */}
         </form>
       </div>
     </div>

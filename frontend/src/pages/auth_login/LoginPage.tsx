@@ -26,7 +26,7 @@ const LoginPage = () => {
             <div className='flex items-center w-full mt-4'>
               <hr className='border-gray-500 flex-grow'/>
               <p className='mx-4 text-[10px]'>alebo</p>
-              <hr className='border-gray-500 flex-grow' />
+              <hr className='border-gray-500 flex-grow'/>
             </div>
             <div className='flex justify-between w-full gap-2 mt-2'>
               <button 
@@ -41,7 +41,8 @@ const LoginPage = () => {
                 <button onClick={() => alert('todo')} className="text-xs hover:text-gray-400">Zabudli ste heslo?</button>
               </div>
               <div className='flex gap-2 mt-2 text-xs'>
-                <p className='text-green-300'>Nemáte ešte účet? </p><a href="/register" className='hover:text-gray-400'>Zaregistruje sa</a>
+                <p className='text-green-300'>Nemáte ešte účet?</p>
+                <button onClick={() => navigate('/register')} className='hover:text-gray-400'>Zaregistruje sa</button>
               </div>
             </div>
           </div>

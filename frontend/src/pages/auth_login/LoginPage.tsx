@@ -11,18 +11,23 @@ const LoginPage = () => {
     <div className='flex justify-center items-center h-screen text-white'>
       <div className='flex flex-col md:flex-row w-full h-screen md:w-8/12 md:h-4/5 rounded-none md:rounded-md p-4 card'>
         <div className='w-full md:w-2/5 p-4 flex flex-col'>
-          <h1 className='text-3xl font-bold text-green-300 items-center md:items-start'>chewzy</h1>
           <h2 className='text-center md:text-left sm:text-3xl md:text-4xl mt-10 md:mt-24 leading-normal'>
             Stráženie pre Vašich domácich miláčikov
           </h2>
           <img src={dog} alt="" className='w-60 hidden md:block'/>
         </div>
-          <form action="" className='p-4 rounded-md w-full sm:w-3/5 sm:mt-24 sm:mx-auto md:m-auto'>
+        <form action="" className='p-4 rounded-md w-full sm:w-3/5 sm:mt-24 sm:mx-auto md:m-auto'>
           <div className='flex flex-col max-w-96 m-auto'>
             <h3 className='py-4 text-md m-auto'>Prihláste sa</h3>
-            <input type="text" placeholder="username" name="uname" required className='outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
-            <input type="password" placeholder="heslo" name="psw" required className='mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
-            <button type="submit" className='p-2 mt-10 bg-black rounded-md text-green-300 hover:bg-zinc-900'>Prihlásiť sa</button>
+            <input type="text" placeholder="username" name="uname" required className='placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
+            <input type="password" placeholder="heslo" name="psw" required className='placeholder:text-sm mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
+            <button 
+              type="submit" 
+              className='p-2 mt-10 bg-black rounded-md text-green-300 hover:bg-zinc-900'
+              onClick={ () => navigate("/home-page")}
+            >
+              Prihlásiť sa
+            </button>
             <div className='flex items-center w-full mt-4'>
               <hr className='border-gray-500 flex-grow'/>
               <p className='mx-4 text-[10px]'>alebo</p>

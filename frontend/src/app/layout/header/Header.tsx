@@ -12,7 +12,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   const menuConfig: MenuItem[] = [
-    { title: "Domov", path: "/home-page" },
+    { title: "Domov", path: "/" },
     { title: "O projekte", path: "/about" },
     { title: "Profil", path:"/profile" },
     { title: "Nastavenia", path: "/settings" },
@@ -44,7 +44,7 @@ const Header = () => {
         ))}
       </ul>
       <button
-        className={`md:hidden text-white z-10 text-3xl fixed right-6 top-4 transform transition-transform duration-300 ${
+        className={`md:hidden text-white z-40 text-3xl fixed right-6 top-4 transform transition-transform duration-300 ${
           isMobileMenuOpen ? "rotate-90" : "rotate-0"
         }`}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -54,7 +54,7 @@ const Header = () => {
       {/* Mobile menu */}
       { isMobileMenuOpen && (
         <div 
-          className='absolute right-0 w-full h-full bg-transparent backdrop-blur-sm text-white shadow-md md:hidden flex flex-col justify-center'>
+          className='absolute right-0 w-full h-full bg-transparent z-30 backdrop-blur-sm  text-white shadow-md md:hidden flex flex-col justify-center'>
           <ul className='flex flex-col space-y-4 p-4 text-xl items-center gap-10'>
             { menuConfig.map((item, index) => (
               <li

@@ -5,7 +5,7 @@ const RegisterPage = () => {
 
   return (
     <div className='flex justify-center items-center h-screen text-white'>
-      <div className='flex flex-col md:flex-row w-full h-screen md:w-8/12 md:h-4/5 rounded-none md:rounded-md p-4 card'>
+      <div className='flex flex-col justify-center md:flex-row w-full h-screen md:w-8/12 md:h-4/5 rounded-none md:rounded-md p-4 card'>
         <div className='w-full md:w-2/5 p-4 flex flex-col'>
           <h2 className='text-center md:text-left sm:text-3xl md:text-4xl mt-10 md:leading-relaxed'>Zaregistrujte sa a nájdite stráženie pre Vašich domácich miláčikov</h2>
         </div>

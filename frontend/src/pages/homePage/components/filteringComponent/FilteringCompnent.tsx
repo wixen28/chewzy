@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import usePets from '../../hooks/usePets'
+import { useState } from "react"
+import usePets from "./hooks/usePets"
 
 const FilteringComponent = () => {
   const { pets, filteredPets, searchPetQuery, setSearchPetQuery } = usePets()
-  const [selectedAnimal, setSelectedAnimal] = useState<string>('')
+  const [selectedAnimal, setSelectedAnimal] = useState<string>("")
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchPetQuery(e.target.value)
-    if (e.target.value === '') {
+    if (selectedAnimal) {
       setSelectedAnimal('')
     }
   }
@@ -20,29 +20,30 @@ const FilteringComponent = () => {
   }
 
   const handleClearSelection = () => {
-    setSelectedAnimal('')
-    setSearchPetQuery('')
+    setSelectedAnimal("")
+    setSearchPetQuery("")
     setIsDropdownOpen(true)
   }
 
-  const filteredPetsList = searchPetQuery
-    ? filteredPets
-    : pets
+  //filtered pets
+  const filteredPetsList = searchPetQuery ? filteredPets : pets
 
   return (
     <div className='flex flex-col mt-10 items-center justify-center'>
       <h3 className='text-center text-[#e5e5e5] md:text-left text-xl md:text-2xl font-bold uppercase'>
         Vyhľadávanie
       </h3>
-      <form className='p-8 rounded-lg shadow-md w-full'>
-        <div className='relative w-96'>
+      <form className='p-8 rounded-lg w-11/12	 md:w-full'>
+        {/* Animals */}
+        <div className='relative w-full md:w-96'>
           <input
             type='text'
-            value={selectedAnimal || searchPetQuery} // Display selected pet or search query
-            onChange={handleInputChange} // Handle input change
-            onFocus={() => setIsDropdownOpen(true)} // Show dropdown when input is focused
-            placeholder='Hľadať zviera'
-            className='w-full p-2 text-gray-400 bg-zinc-800 border border-gray-500 rounded-md'
+            value={selectedAnimal || searchPetQuery} 
+            onChange={handleInputChange} 
+            onFocus={() => setIsDropdownOpen(true)}
+            onBlur={() => setTimeout(() => setIsDropdownOpen(false), 100)}
+            placeholder='Vybrať zviera'
+            className='outline-none w-full p-2 text-gray-400 bg-zinc-800 border-gray-400 border-[1px] rounded-md'
           />
           {/* Show clear button if there is a selected animal */}
           { selectedAnimal && (
@@ -59,16 +60,17 @@ const FilteringComponent = () => {
             <ul className='absolute max-h-52 overflow-auto bg-zinc-900 w-full border border-gray-500 mt-1 rounded-md z-10'>
               {filteredPetsList.map((pet) => (
                 <li
-                  key={pet.id} // Use pet's ID for unique keys
-                  onClick={() => handleSelectAnimal(pet)} // Select pet when clicked
+                  key={pet.id} 
+                  onClick={() => handleSelectAnimal(pet)} 
                   className='p-2 text-gray-400 hover:bg-gray-700 cursor-pointer'
                 >
-                  {pet.label} {/* Display pet name */}
+                  {pet.label}
                 </li>
               ))}
             </ul>
           )}
         </div>
+        {/* cities */}
       </form>
     </div>
   )

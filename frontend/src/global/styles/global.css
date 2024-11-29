@@ -27,7 +27,7 @@ html, body {
 } */
 
 body {
-  background: linear-gradient(to bottom, #44624a, #8ba888, #c0cfb2);
+  background: linear-gradient(to bottom, #44624a, #A4C3A2, #c0cfb2);
   height: 100vh;
   margin: 0;
 } 
@@ -35,8 +35,9 @@ body {
 .card {
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  background-color: rgba(68, 98, 74, 0.85); 
-  
+  /* background-color: rgba(68, 98, 74, 0.85);  */
+  background-color: rgba(74, 89, 75, 0.85); 
+
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 

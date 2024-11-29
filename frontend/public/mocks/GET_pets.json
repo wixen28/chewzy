@@ -1,0 +1,17 @@
+[
+  { "label": "Pes", "value": "dog" },
+  { "label": "Mačka", "value": "cat" },
+  { "label": "Zajac", "value": "rabbit" },
+  { "label": "Škrečok", "value": "hamster" },
+  { "label": "Činčila", "value": "chinchilla" },
+  { "label": "Korytnačka", "value": "turtle" },
+  { "label": "Had", "value": "snake" },
+  { "label": "Papagáj", "value": "parrot" },
+  { "label": "Fretka", "value": "ferret" },
+  { "label": "Morča", "value": "guinea pig" },
+  { "label": "Ryba", "value": "fish" },
+  { "label": "Kôň", "value": "horse" },
+  { "label": "Králik", "value": "bunny" },
+  { "label": "Pavúk", "value": "spider" },
+  { "label": "Iguana", "value": "iguana" }
+]

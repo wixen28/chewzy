@@ -31,13 +31,13 @@ const Header = () => {
   return (
     <div className='w-full h-16 flex m-auto'>
       {/* Desktop menu */}
-      <ul className='hidden md:flex space-x-4 m-auto gap-10 '>
+      <ul className='hidden md:flex space-x-4 m-auto gap-10'>
         { menuConfig.map((item, index) => (
           <li
             key={index}
             title={item.title}
             onClick={() => handleClick(item)}
-            className='cursor-pointer text-[#e5e5e5] text-sm hover:underline font-bold uppercase'
+            className='cursor-pointer text-[#e5e5e5] text-sm font-bold uppercase relative group'
           >
             {item.title}
           </li>
@@ -54,7 +54,7 @@ const Header = () => {
       {/* Mobile menu */}
       { isMobileMenuOpen && (
         <div 
-          className='absolute right-0 w-full h-full bg-transparent z-30 backdrop-blur-sm  text-white shadow-md md:hidden flex flex-col justify-center'>
+          className='absolute right-0 w-full h-full bg-gray-900 z-30 backdrop-blur-3xl  text-white shadow-md md:hidden flex flex-col justify-center'>
           <ul className='flex flex-col space-y-4 p-4 text-xl items-center gap-10'>
             { menuConfig.map((item, index) => (
               <li

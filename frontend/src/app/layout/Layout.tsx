@@ -6,7 +6,7 @@ const Layout = () => {
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register"
 
   return (
-    <div className={`h-screen ${!isAuthPage ? 'card' : ''}`}>
+    <div className={`h-screen`}>
       <h1 className="logo-font text-xl md:text-3xl font-bold text-green-300 pt-4 pl-8 absolute top-0 left-0 z-40">
           chewzy
       </h1>

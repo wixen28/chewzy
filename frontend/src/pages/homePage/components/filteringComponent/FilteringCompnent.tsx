@@ -1,103 +1,74 @@
-import { useState } from "react";
-
-type FilterOption = {
-  label: string;
-  value: string;
-};
+import { useState } from 'react'
+import usePets from '../../hooks/usePets'
 
 const FilteringComponent = () => {
-  const animalOptions: FilterOption[] = [
-    { label: "Pes", value: "pes" },
-    { label: "Mačka", value: "macka" },
-    { label: "Zajac", value: "zajac" },
-    { label: "Škrečok", value: "skrecok" },
-    { label: "Činčila", value: "cincila" },
-  ]
+  const { pets, filteredPets, searchPetQuery, setSearchPetQuery } = usePets()
+  const [selectedAnimal, setSelectedAnimal] = useState<string>('')
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
 
-  const cityOptions: FilterOption[] = [
-    { label: "Bratislava", value: "bratislava" },
-    { label: "Banska Bystrica", value: "bratislava" },
-    { label: "Košice", value: "kosice" },
-    { label: "Prešov", value: "presov" },
-  ]
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchPetQuery(e.target.value)
+    if (e.target.value === '') {
+      setSelectedAnimal('')
+    }
+  }
 
-  const reviewOptions: FilterOption[] = [
-    { label: "5 Hviezdičiek", value: "5" },
-    { label: "4 Hviezdičky", value: "4" },
-    { label: "3 Hviezdičky", value: "3" },
-    { label: "2 Hviezdičky", value: "3" },
-    { label: "1 Hviezdička", value: "3" },
-  ]
+  const handleSelectAnimal = (pet: { id: string; label: string; value: string }) => {
+    setSelectedAnimal(pet.label)
+    setSearchPetQuery(pet.label)
+    setIsDropdownOpen(false)
+  }
 
-  const [selectedAnimal, setSelectedAnimal] = useState<string>("")
-  const [selectedCity, setSelectedCity] = useState<string>("")
-  const [selectedReview, setSelectedReview] = useState<string>("")
+  const handleClearSelection = () => {
+    setSelectedAnimal('')
+    setSearchPetQuery('')
+    setIsDropdownOpen(true)
+  }
+
+  const filteredPetsList = searchPetQuery
+    ? filteredPets
+    : pets
 
   return (
     <div className='flex flex-col mt-10 items-center justify-center'>
       <h3 className='text-center text-[#e5e5e5] md:text-left text-xl md:text-2xl font-bold uppercase'>
         Vyhľadávanie
       </h3>
-      <form className='flex flex-col p-8 rounded-lg shadow-md w-full h-auto'>
-        <div className='flex justify-center gap-10 '>
-          <div>
-          <select
-            id="animal"
-              value={selectedAnimal}
-              onChange={(e) => setSelectedAnimal(e.target.value)}
-              className='abosolute w-96 pr-10 placeholder:text-sm outline-none border-[1px] border-gray-500 focus:border-green-200 p-2 bg-zinc-900 rounded-md text-gray-400'
+      <form className='p-8 rounded-lg shadow-md w-full'>
+        <div className='relative w-96'>
+          <input
+            type='text'
+            value={selectedAnimal || searchPetQuery} // Display selected pet or search query
+            onChange={handleInputChange} // Handle input change
+            onFocus={() => setIsDropdownOpen(true)} // Show dropdown when input is focused
+            placeholder='Hľadať zviera'
+            className='w-full p-2 text-gray-400 bg-zinc-800 border border-gray-500 rounded-md'
+          />
+          {/* Show clear button if there is a selected animal */}
+          { selectedAnimal && (
+            <button
+              type='button'
+              onClick={handleClearSelection}
+              className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'
             >
-              <option value="" disabled >
-                Vyberte zviera
-              </option>
-              { animalOptions.map((option) => (
-                <option key={option.value} value={option.value} >
-                  {option.label}
-                </option>
+              &#10005;
+            </button>
+          )}
+          {/* Show all pets when input is focused or filter results based on query */}
+          { isDropdownOpen && (
+            <ul className='absolute max-h-52 overflow-auto bg-zinc-900 w-full border border-gray-500 mt-1 rounded-md z-10'>
+              {filteredPetsList.map((pet) => (
+                <li
+                  key={pet.id} // Use pet's ID for unique keys
+                  onClick={() => handleSelectAnimal(pet)} // Select pet when clicked
+                  className='p-2 text-gray-400 hover:bg-gray-700 cursor-pointer'
+                >
+                  {pet.label} {/* Display pet name */}
+                </li>
               ))}
-            </select>
+            </ul>
+          )}
         </div>
-        <div>
-          <select
-            id="city"
-            value={selectedCity}
-            onChange={(e) => setSelectedCity(e.target.value)}
-            className='w-96 placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md text-gray-400'
-          >
-            <option value="" disabled className=''>
-              Zvoľte lokalitu
-            </option>
-            { cityOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <select
-            id="review"
-            value={selectedReview}
-            onChange={(e) => setSelectedReview(e.target.value)}
-            className='w-96 placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md text-gray-400'
-          >
-            <option value="" disabled>
-              Preferované Hodnotenie
-            </option>
-            { reviewOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <button 
-        className='m-auto w-1/4 p-2 mt-10 bg-black rounded-md text-green-300 hover:bg-zinc-900'
-        onClick={ () => alert("todo")} 
-      >
-        Vyhľadať
-      </button>
       </form>
     </div>
   )

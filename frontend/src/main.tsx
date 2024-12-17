@@ -1,14 +1,14 @@
 import ReactDOM from "react-dom/client"
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 
-import './global/styles/global.css'
-
+import { AuthProvider } from "./app/context/AuthContext"
+import Apollo from "./graphql/Apollo"
 import App from './app/App'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
 
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <AuthProvider>
+    <Apollo>
+      <App />
+    </Apollo>
+  </AuthProvider>
+)

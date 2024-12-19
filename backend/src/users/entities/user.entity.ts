@@ -11,7 +11,7 @@ export class User {
 
   @Column({ type: 'varchar', length: 100 })
   @Field()
-  name!: string;  // Added name column
+  name!: string; 
 
   @Column({ type: 'varchar', length: 100, unique: true })
   @Field()
@@ -24,23 +24,23 @@ export class User {
 
   @Column({ type: 'varchar', length: 20, nullable: true })
   @Field({ nullable: true })
-  role?: string;  // Added role column with a nullable option
+  role?: string; 
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   @Field({ nullable: true })
-  profile_picture?: string;  // Added profile_picture column with nullable option
+  profile_picture?: string;  
 
   @Column({ type: 'text', nullable: true })
   @Field({ nullable: true })
-  bio?: string;  // Added bio column with nullable option
+  bio?: string; 
 
   @Column({ type: 'varchar', length: 100, nullable: true })
   @Field({ nullable: true })
-  location?: string;  // Added location column with nullable option
+  location?: string;  
 
   @CreateDateColumn()
   @HideField()
-  created_at!: Date;  // Automatically set by TypeORM
+  created_at!: Date; 
 
   @UpdateDateColumn()
   @HideField()

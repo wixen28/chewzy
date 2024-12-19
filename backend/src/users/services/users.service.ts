@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
-import * as bcrypt from 'bcrypt'; // To hash passwords
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -28,18 +28,14 @@ export class UsersService {
     return this.usersRepository.save(user);
   }
 
-  // Fixing the return type to match with 'User | null'
-  async findUserByEmail(email: string): Promise<User | null> {
-    return this.usersRepository.findOne({ where: { email } });
+  async findOne(id: number): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { id } });
   }
 
-  // Fixing the return type and handling 'null' value appropriately
   async updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User | null> {
     await this.usersRepository.update(id, updateUserDto);
 
     const updatedUser = await this.usersRepository.findOne({ where: { id } });
-    return updatedUser;  // This can be 'null' if no user is found
+    return updatedUser;
   }
-
-  // Add other necessary methods (e.g., findById, delete, etc.)
 }

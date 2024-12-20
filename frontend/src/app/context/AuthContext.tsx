@@ -1,25 +1,25 @@
 import { createContext,  useEffect, useState } from "react"
 
-import { LoginData, User } from "~/graphql/types"
+// import { LoginData, User } from "~/graphql/types"
 
 type AuthContextType = {
-  user: User | null
+  // user: User | null
   accessToken: string | null
-  login: (authData: LoginData, rememberMe: boolean) => void
+  // login: (authData: LoginData, rememberMe: boolean) => void
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType>({
-  user: null,
+  // user: null,
   accessToken: null,
-  login: (_authData: LoginData, _rememberMe: boolean) => {},
+  // login: (_authData: LoginData, _rememberMe: boolean) => {},
   logout: () => {}
 })
 
 
 const AuthProvider = (props: any) => {
   const [accessToken, setAccessToken] = useState<string | null>(null)
-  const [user, setUser] = useState<User | null>(null)
+  // const [user, setUser] = useState<User | null>(null)
 
   useEffect( () => {
     const savedToken = localStorage.getItem("accessToken")
@@ -29,29 +29,29 @@ const AuthProvider = (props: any) => {
     }
   },[])
 
-  const login = (authData: LoginData, rememberMe: boolean) => {
-    if(authData.accessToken) {
-      setAccessToken(authData.accessToken)
-      setUser(authData.user as User)
+  // // const login = (authData: LoginData, rememberMe: boolean) => {
+  //   if(authData.accessToken) {
+  //     setAccessToken(authData.accessToken)
+  //     setUser(authData.user as User)
 
-      if(rememberMe) {
-        localStorage.setItem("accessToken", authData.accessToken)
-      }
-    }
-  }
+  //     if(rememberMe) {
+  //       localStorage.setItem("accessToken", authData.accessToken)
+  //     }
+  //   }
+  // }
 
   const logout = () => {
     setAccessToken(null)
-    setUser(null)
+    // setUser(null)
     localStorage.removeItem("accessToken")
   }
 
   return (
     <AuthContext.Provider
       value={{
-        user,
+        // user,
         accessToken,
-        login,
+        // login,
         logout,
       }}
       {...props}

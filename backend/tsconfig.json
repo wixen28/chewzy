@@ -17,7 +17,7 @@
     "incremental": true,
     "skipLibCheck": true,
     "target": "ES2017",
-    "types": ["jest"]
+    "types": ["node", "jest"],
 
   },
   "include": ["src/**/*"],

@@ -18,12 +18,10 @@ import { User } from './entities/user.entity'
   exports: [UsersService],
 })
 
-
 export class UsersModule implements OnModuleInit {
-  constructor(private readonly seedService: UsersService) {}
+  constructor(private readonly seedService: UsersSeeder) {}
 
   async onModuleInit() {
-    //TODO
     await this.seedService.seed()
   }
 }

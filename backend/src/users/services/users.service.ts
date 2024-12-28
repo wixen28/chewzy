@@ -42,8 +42,13 @@ export class UsersService {
     return this.usersRepository.save(user)
   }
 
-  async findOne(id: number): Promise<User | null> {
-    return this.usersRepository.findOne({ where: { id } })
+  async getUser(id: number): Promise<User | null> {
+    return await this.usersRepository.findOneBy({ id })
+  }
+
+  
+  async getUserByEmail(email: string): Promise<User | null> {
+    return await this.usersRepository.findOneBy({ email })
   }
 
   async updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User | null> {

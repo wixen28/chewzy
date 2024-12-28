@@ -11,7 +11,7 @@ export class User {
 
   @Column({ type: 'varchar', length: 100 })
   @Field()
-  name!: string; 
+  full_name!: string; 
 
   @Column({ type: 'varchar', length: 100, unique: true })
   @Field()
@@ -44,5 +44,5 @@ export class User {
 
   @UpdateDateColumn()
   @HideField()
-  updatedAt!: Date;  // Automatically set by TypeORM
+  updated_at!: Date;  // Automatically set by TypeORM
 }

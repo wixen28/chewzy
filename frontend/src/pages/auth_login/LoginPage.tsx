@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Controller, useForm } from "react-hook-form"
 
 import dog from '../../utils/images/dog.png'
 import { FaGoogle } from "react-icons/fa"
@@ -6,7 +7,9 @@ import { FaFacebook } from "react-icons/fa"
 
 const LoginPage = () => {
   const navigate = useNavigate()
+  const { control, handleSubmit, formState: { errors } } = useForm<LoginMutationVariables>({})
 
+  
   return (
     <div className='flex justify-center items-center h-screen text-[#e5e5e5]'>
       <div className='flex flex-col justify-center md:flex-row w-full h-screen md:w-8/12 md:h-4/5 rounded-none md:rounded-md p-4 card'>
@@ -19,7 +22,24 @@ const LoginPage = () => {
         <form action="" className='p-4 rounded-md w-full sm:w-3/5 sm:mt-24 sm:mx-auto md:m-auto'>
           <div className='flex flex-col max-w-96 m-auto'>
             <h3 className='py-4 text-md m-auto'>Prihláste sa</h3>
-            <input type="text" placeholder="username" name="uname" required className='placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
+            <Controller
+              name="loginInput.email"
+              control={control}
+              defaultValue=""
+              rules={{ required: true }}
+              render={({ field }) => (
+                <input 
+                  type="text" 
+                  id="emailId"
+                  placeholder="Email" 
+                  required 
+                  {...field}
+                  className='placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'
+                  value={field.value || ""}
+
+                />
+              )}
+            />
             <input type="password" placeholder="heslo" name="psw" required className='placeholder:text-sm mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
             <button 
               type="submit" 

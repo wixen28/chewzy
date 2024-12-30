@@ -1,23 +1,35 @@
-import { IsString, IsOptional } from 'class-validator'
+import { InputType, Field } from '@nestjs/graphql'
+import { IsEmail, IsOptional } from 'class-validator'
+import { UserRole } from '../entities/user.entity'
 
+@InputType()
 export class UpdateUserDto {
+  @Field({ nullable: true })
   @IsOptional()
-  @IsString()
   name?: string;
 
+  @Field({ nullable: true })
+  @IsEmail()
   @IsOptional()
-  @IsString()
-  role?: string;
+  email?: string;
 
+  @Field({ nullable: true })
   @IsOptional()
-  @IsString()
+  password?: string;
+
+  @Field({ nullable: true })
+  @IsOptional()
+  role?: UserRole;
+
+  @Field({ nullable: true })
+  @IsOptional()
   profile_picture?: string;
 
+  @Field({ nullable: true })
   @IsOptional()
-  @IsString()
   bio?: string;
 
+  @Field({ nullable: true })
   @IsOptional()
-  @IsString()
   location?: string;
 }

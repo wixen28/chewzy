@@ -6,7 +6,7 @@ import { User } from 'src/users/entities/user.entity'
 
 class UserLoginData extends PartialType(
   
-  OmitType(User, ['password', 'created_at', 'updated_at' ] as const),
+  OmitType(User, ['password', 'createdAt', 'updatedAt' ] as const),
   
 ) {}
 

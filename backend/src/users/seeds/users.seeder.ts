@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-
+import { UserRole } from '../entities/user.entity'
 import { User } from '../entities/user.entity';
 
 @Injectable()
@@ -29,11 +29,14 @@ export class UsersSeeder {
     const hashedPassword = await bcrypt.hash('28011994', 10);
 
     const devUser = this.usersRepository.create({
-      email: 'dev@chewzy.sk',
-      password: hashedPassword,
-      full_name: 'Dev User', 
-      role: 'admin', 
-    });
+      fullName: 'John Doe', // Ensure camelCase
+      email: 'johndoe@example.com',
+      password: 'securepassword',
+      role: UserRole.ADMIN, // Use the enum, not a plain string
+      profilePicture: 'profile.jpg',
+      bio: 'Developer and pet lover',
+      location: 'New York',
+    })
 
     await this.usersRepository.save(devUser);
   }

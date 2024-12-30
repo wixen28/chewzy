@@ -36,11 +36,10 @@ const LoginPage = () => {
                   {...field}
                   className='placeholder:text-sm outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'
                   value={field.value || ""}
-
                 />
               )}
             />
-            <input type="password" placeholder="heslo" name="psw" required className='placeholder:text-sm mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
+            <input type="password" placeholder="Heslo" name="psw" required className='placeholder:text-sm mt-4 outline-none border-[1px] border-gray-500 p-2 bg-zinc-900 rounded-md'/>
             <button 
               type="submit" 
               className='p-2 mt-10 bg-black rounded-md text-green-300 hover:bg-zinc-900'

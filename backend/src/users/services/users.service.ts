@@ -21,7 +21,7 @@ export class UsersService {
     if (usersArgs.search)
       baseWhere.email = Like(`%${usersArgs.search}%`)
 
-    const users = await this.usersRepository.findBy(baseWhere)
+    const users = await this.usersRepository.find(baseWhere)
 
     return users
   }
